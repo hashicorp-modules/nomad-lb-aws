@@ -89,14 +89,14 @@ resource "aws_lb" "nomad" {
 }
 
 resource "random_id" "nomad_http_4646" {
-  count = "${var.create ? 1 : 0}"
+  count = "${var.create && !var.use_lb_cert ? 1 : 0}"
 
   byte_length = 4
   prefix      = "nomad-http-4646-"
 }
 
 resource "aws_lb_target_group" "nomad_http_4646" {
-  count = "${var.create ? 1 : 0}"
+  count = "${var.create && !var.use_lb_cert ? 1 : 0}"
 
   name     = "${random_id.nomad_http_4646.hex}"
   vpc_id   = "${var.vpc_id}"
@@ -118,7 +118,7 @@ resource "aws_lb_target_group" "nomad_http_4646" {
 }
 
 resource "aws_lb_listener" "nomad_80" {
-  count = "${var.create ? 1 : 0}"
+  count = "${var.create && !var.use_lb_cert ? 1 : 0}"
 
   load_balancer_arn = "${aws_lb.nomad.arn}"
   port              = "80"
@@ -133,9 +133,11 @@ resource "aws_lb_listener" "nomad_80" {
 resource "aws_iam_server_certificate" "nomad" {
   count = "${var.create && var.use_lb_cert ? 1 : 0}"
 
-  name             = "${random_id.nomad_lb.hex}"
-  certificate_body = "${var.lb_cert}"
-  private_key      = "${var.lb_private_key}"
+  name              = "${random_id.nomad_lb.hex}"
+  certificate_body  = "${var.lb_cert}"
+  private_key       = "${var.lb_private_key}"
+  certificate_chain = "${var.lb_cert_chain}"
+  path              = "/${var.name}-${random_id.nomad_lb.hex}"
 }
 
 resource "random_id" "nomad_https_4646" {
