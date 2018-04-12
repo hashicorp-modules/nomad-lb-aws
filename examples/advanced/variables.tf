@@ -9,4 +9,6 @@ variable "bastion_count"     { }
 variable "is_internal_lb"    { }
 variable "use_lb_cert"       { }
 variable "lb_ssl_policy"     { }
+variable "lb_logs_prefix"    { default = "nomad" }
+variable "lb_logs_enabled"   { default = true }
 variable "tags"              { type = "map" }

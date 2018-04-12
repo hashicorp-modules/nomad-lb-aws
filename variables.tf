@@ -52,6 +52,21 @@ variable "lb_ssl_policy" {
   default     = "ELBSecurityPolicy-2016-08"
 }
 
+variable "lb_logs_bucket" {
+  description = "S3 bucket for LB access logs."
+  default     = ""
+}
+
+variable "lb_logs_prefix" {
+  description = "S3 bucket prefix for LB access logs."
+  default     = ""
+}
+
+variable "lb_logs_enabled" {
+  description = "S3 bucket LB access logs enabled, defaults to \"true\"."
+  default     = true
+}
+
 variable "tags" {
   description = "Optional map of tags to set on resources, defaults to empty map."
   type        = "map"
