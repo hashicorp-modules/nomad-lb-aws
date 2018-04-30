@@ -1,5 +1,5 @@
 module "nomad_lb_aws" {
-  # source = "github.com/hashicorp-modules/nomad-lb-aws?ref=f-refactor"
+  # source = "github.com/hashicorp-modules/nomad-lb-aws"
   source = "../../../nomad-lb-aws"
 
   create      = false

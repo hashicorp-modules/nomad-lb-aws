@@ -19,7 +19,7 @@ data "aws_ami" "base" {
 }
 
 module "network_aws" {
-  # source = "github.com/hashicorp-modules/network-aws?ref=f-refactor"
+  # source = "github.com/hashicorp-modules/network-aws"
   source = "../../../network-aws"
 
   name              = "${var.name}"
@@ -32,7 +32,7 @@ module "network_aws" {
 }
 
 module "root_tls_self_signed_ca" {
-  # source = "github.com/hashicorp-modules/tls-self-signed-cert?ref=f-refactor"
+  # source = "github.com/hashicorp-modules/tls-self-signed-cert"
   source = "../../../tls-self-signed-cert"
 
   name                  = "root"
@@ -46,7 +46,7 @@ module "root_tls_self_signed_ca" {
 }
 
 module "leaf_tls_self_signed_cert" {
-  # source = "github.com/hashicorp-modules/tls-self-signed-cert?ref=f-refactor"
+  # source = "github.com/hashicorp-modules/tls-self-signed-cert"
   source = "../../../tls-self-signed-cert"
 
   name                  = "leaf"
@@ -102,7 +102,7 @@ POLICY
 }
 
 module "nomad_lb_aws" {
-  # source = "github.com/hashicorp-modules/nomad-lb-aws?ref=f-refactor"
+  # source = "github.com/hashicorp-modules/nomad-lb-aws"
   source = "../../../nomad-lb-aws"
 
   create          = "${var.create}"
