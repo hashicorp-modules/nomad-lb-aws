@@ -2,22 +2,6 @@ terraform {
   required_version = ">= 0.11.6"
 }
 
-provider "aws" {
-  version = "~> 1.12"
-}
-
-provider "random" {
-  version = "~> 1.1"
-}
-
-provider "tls" {
-  version = "~> 1.1"
-}
-
-provider "null" {
-  version = "~> 1.0"
-}
-
 resource "aws_security_group" "nomad_lb" {
   count = "${var.create ? 1 : 0}"
 
