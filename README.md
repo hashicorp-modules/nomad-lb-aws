@@ -13,7 +13,7 @@ Checkout [examples](./examples) for fully functioning examples.
 ## Input Variables
 
 - `create`: [Optional] Create Module, defaults to true.
-- `name`: [Optional] Name for resources, defaults to "nomad-aws".
+- `name`: [Optional] Name for resources, defaults to "nomad-lb-aws".
 - `vpc_id`: [Required] VPC ID to provision LB in.
 - `cidr_blocks`: [Optional] CIDR blocks to provision LB across.
 - `subnet_ids`: [Optional] Subnet ID(s) to provision LB across.
