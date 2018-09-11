@@ -12,7 +12,7 @@ variable "vpc_id" {
   description = "VPC ID to provision LB in."
 }
 
-variable "cidr_blocks" {
+variable "lb_cidr_blocks" {
   description = "CIDR blocks to provision LB across."
   type        = "list"
 }
@@ -22,12 +22,12 @@ variable "subnet_ids" {
   type        = "list"
 }
 
-variable "is_internal_lb" {
+variable "lb_internal" {
   description = "Is an internal load balancer, defaults to true."
   default     = true
 }
 
-variable "use_lb_cert" {
+variable "lb_use_cert" {
   description = "Use certificate passed in for the LB IAM listener, \"lb_cert\" and \"lb_private_key\" must be passed in if true, defaults to false."
   default     = false
 }

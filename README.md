@@ -15,10 +15,10 @@ Checkout [examples](./examples) for fully functioning examples.
 - `create`: [Optional] Create Module, defaults to true.
 - `name`: [Optional] Name for resources, defaults to "nomad-lb-aws".
 - `vpc_id`: [Required] VPC ID to provision LB in.
-- `cidr_blocks`: [Optional] CIDR blocks to provision LB across.
+- `lb_cidr_blocks`: [Optional] CIDR blocks to provision LB across.
 - `subnet_ids`: [Optional] Subnet ID(s) to provision LB across.
-- `is_internal_lb`: [Optional] Is an internal load balancer, defaults to true.
-- `use_lb_cert`: [Optional] Use certificate passed in for the LB IAM listener, "lb_cert" and "lb_private_key" must be passed in if true, defaults to false.
+- `lb_internal`: [Optional] Is an internal load balancer, defaults to true.
+- `lb_use_cert`: [Optional] Use certificate passed in for the LB IAM listener, "lb_cert" and "lb_private_key" must be passed in if true, defaults to false.
 - `lb_cert`: [Optional] Certificate for LB IAM server certificate.
 - `lb_private_key`: [Optional] Private key for LB IAM server certificate.
 - `lb_cert_chain`: [Optional] Certificate chain for LB IAM server certificate.
@@ -31,10 +31,16 @@ Checkout [examples](./examples) for fully functioning examples.
 
 ## Outputs
 
-- `nomad_lb_sg_id`: Nomad load balancer security group ID.
-- `nomad_tg_http_4646_arn`: nomad load balancer HTTP 4646 target group.
-- `nomad_tg_https_4646_arn`: nomad load balancer HTTPS 4646 target group.
-- `nomad_lb_dns`: Nomad load balancer DNS name.
+- `nomad_app_lb_sg_id`: Nomad application load balancer security group ID.
+- `nomad_lb_arn`: Nomad application load balancer ARN.
+- `nomad_app_lb_dns`: Nomad load balancer DNS name.
+- `nomad_network_lb_dns`: Nomad load balancer DNS name.
+- `nomad_tg_tcp_22_arn`: Nomad network load balancer TCP 22 target group.
+- `nomad_tg_tcp_4646_arn`: Nomad network load balancer TCP 4646 target group.
+- `nomad_tg_http_4646_arn`: Nomad application load balancer HTTP 4646 target group.
+- `nomad_tg_https_4646_arn`: Nomad application load balancer HTTPS 4646 target group.
+- `nomad_tg_http_3030_arn`: Nomad application load balancer HTTP 3030 target group.
+- `nomad_tg_https_3030_arn`: Nomad application load balancer HTTPS 3030 target group.
 
 ## Module Dependencies
 
